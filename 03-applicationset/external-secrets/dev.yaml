@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: exernal-secrets
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+  - git:
+      files:
+      - path: clusters/dev-gke-clusters.yaml
+      repoURL: "git@github.com:SamPriyadarshi/argocd-as.git"
+      revision: HEAD
+    selector:
+      matchLabels:
+        workloads.external-secrets: "deployed"
+  template:
+    metadata:
+      name: 'external-secrets'
+      labels:
+        workloadType: security
+        environment: "{{ .themes.environment }}"
+        syncType: "helm-remote"
+        cluster: "{{ .cluster.friendlyName }}"
+      finalizers:
+      - "resources-finalizer.argocd.argoproj.io"
+    spec:
+      project: default
+      sources:
+      - chart: external-secrets
+        repoURL: https://charts.external-secrets.io
+        targetRevision: 'v0.9.6'
+        helm:
+          parameters:
+          - name: "installCRDs"
+            value: "true"
+      - repoURL: "git@github.com:SamPriyadarshi/argocd-as.git"
+        targetRevision: HEAD
+        path: applicationset/external-secrets/config
+      destination:
+        name: '{{ .cluster.name }}'
+        namespace: 'default'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true

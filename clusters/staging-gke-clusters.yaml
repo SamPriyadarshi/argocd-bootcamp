@@ -1,0 +1,17 @@
+cluster:
+  # try to match name in ArgoCD or planned name
+  name: workloads-staging
+  # for applicationset names generally
+  friendlyName: "workloads-staging"
+  # use https://kubernetes.default.svc for local argo
+  server: https://kubernetes.default.svc
+
+# themes for common and shared values
+themes:
+  environment: staging
+  #role: ci
+  #provider: baremetal|gke|aws
+  provider: gke
+# workloads opt-in as inventory
+workloads:
+  train-schedule: deployed

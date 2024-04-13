@@ -1,0 +1,18 @@
+cluster:
+  # try to match name in ArgoCD or planned name
+  name: workloads-dev
+  # for applicationset names generally
+  friendlyName: "workloads-dev"
+  # use https://kubernetes.default.svc for local argo
+  server: https://kubernetes.default.svc
+
+# themes for common and shared values
+themes:
+  environment: dev
+  #role: ci
+  #provider: baremetal|gke|aws
+  provider: gke
+# workloads opt-in as inventory
+workloads:
+  train-schedule: deployed
+  external-secrets: deployed
