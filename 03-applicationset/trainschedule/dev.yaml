@@ -9,7 +9,7 @@ spec:
   - git:
       files:
       - path: clusters/dev-gke-clusters.yaml
-      repoURL: "git@github.com:SamPriyadarshi/argocd-as.git"
+      repoURL: "git@github.com:SamPriyadarshi/argocd-bootcamp.git"
       revision: HEAD
     selector:
       matchLabels:
