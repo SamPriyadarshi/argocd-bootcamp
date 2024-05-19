@@ -14,7 +14,7 @@ spec:
         url: https://34.41.248.45
   template:
     metadata:
-      name: 'ingress-nginx'
+      name: 'ingress-nginx-{{.cluster}}'
     spec:
       project: default
       sources:
