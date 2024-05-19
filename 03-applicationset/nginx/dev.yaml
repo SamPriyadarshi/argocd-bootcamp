@@ -10,6 +10,10 @@ spec:
       elements:
       - cluster: in-cluster
         url: https://kubernetes.default.svc
+      - cluster: dev
+        url: https://34.67.23.222
+      - cluster: staging
+        url: https://34.41.248.45
   template:
     metadata:
       name: 'ingress-nginx'
