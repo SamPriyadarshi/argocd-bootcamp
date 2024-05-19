@@ -27,7 +27,7 @@ spec:
     spec:
       project: default
       sources:
-      - repoURL: "git@github.com:SamPriyadarshi/sample-train-schedule.git"
+      - repoURL: "https://github.com/SamPriyadarshi/train-schedule-deploy-resources.git"
         targetRevision: HEAD
         path: sample-train-schedule/dev
       destination:
