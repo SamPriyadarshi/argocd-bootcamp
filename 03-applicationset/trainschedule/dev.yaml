@@ -9,7 +9,7 @@ spec:
   - git:
       files:
       - path: clusters/dev-gke-clusters.yaml
-      repoURL: "git@github.com:SamPriyadarshi/argocd-bootcamp.git"
+      repoURL: "https://github.com/SamPriyadarshi/argocd-bootcamp.git"
       revision: HEAD
     selector:
       matchLabels:
@@ -27,7 +27,7 @@ spec:
     spec:
       project: default
       sources:
-      - repoURL: "git@github.com:SamPriyadarshi/train-schedule-deploy-resources.git"
+      - repoURL: "https://github.com/SamPriyadarshi/sample-train-schedule.git"
         targetRevision: HEAD
         path: sample-train-schedule/dev
       destination:
