@@ -8,8 +8,6 @@ spec:
   generators:
   - list:
       elements:
-      - cluster: in-cluster
-        url: https://kubernetes.default.svc
       - cluster: dev
         url: https://34.67.23.222
       - cluster: staging
