@@ -6,14 +6,10 @@ metadata:
 spec:
   goTemplate: true
   generators:
-  - git:
-      files:
-      - path: clusters/dev-gke-clusters.yaml
-      repoURL: "git@github.com:SamPriyadarshi/argocd-as.git"
-      revision: HEAD
-    selector:
-      matchLabels:
-        workloads.external-secrets: "deployed"
+  - clusters: {}
+      # selector:
+      #   matchLabels:
+      #     staging: true
   template:
     metadata:
       name: 'external-secrets'
@@ -34,9 +30,9 @@ spec:
           parameters:
           - name: "installCRDs"
             value: "true"
-      - repoURL: "git@github.com:SamPriyadarshi/argocd-as.git"
+      - repoURL: "https://github.com/SamPriyadarshi/argocd-bootcamp.git"
         targetRevision: HEAD
-        path: applicationset/external-secrets/config
+        path: 03-applicationset/external-secrets/config
       destination:
         name: '{{ .cluster.name }}'
         namespace: 'default'
