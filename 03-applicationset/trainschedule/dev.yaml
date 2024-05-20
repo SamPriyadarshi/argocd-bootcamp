@@ -35,8 +35,5 @@ spec:
         namespace: 'train-schedule'
       syncPolicy:
         automated: {}
-        managedNamespaceMetadata:
-          labels:
-            pod-security.kubernetes.io/enforce: privileged   
         syncOptions:
           - CreateNamespace=true
