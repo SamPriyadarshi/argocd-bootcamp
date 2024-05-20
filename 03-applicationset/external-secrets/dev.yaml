@@ -13,11 +13,6 @@ spec:
   template:
     metadata:
       name: 'external-secrets-{{.name}}'
-      labels:
-        workloadType: security
-        environment: "{{ .themes.environment }}"
-        syncType: "helm-remote"
-        cluster: "{{ .cluster.friendlyName }}"
       finalizers:
       - "resources-finalizer.argocd.argoproj.io"
     spec:
@@ -34,7 +29,7 @@ spec:
         targetRevision: HEAD
         path: 03-applicationset/external-secrets/config
       destination:
-        name: '{{ .cluster.name }}'
+        name: '{{ .server }}'
         namespace: 'default'
       syncPolicy:
         automated: {}
