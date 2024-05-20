@@ -15,3 +15,4 @@ themes:
 # workloads opt-in as inventory
 workloads:
   train-schedule: deployed
+  echo-server: deployed

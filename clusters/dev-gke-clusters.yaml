@@ -16,3 +16,4 @@ themes:
 workloads:
   train-schedule: deployed
   external-secrets: deployed
+  echo-server: deployed
