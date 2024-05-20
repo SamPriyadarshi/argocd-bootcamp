@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: train-schedule
+  namespace: argocd
+spec:
+  goTemplate: true
+  generators:
+  - git:
+      files:
+      - path: clusters/staging-gke-clusters.yaml
+      repoURL: "https://github.com/SamPriyadarshi/argocd-bootcamp.git"
+      revision: HEAD
+    selector:
+      matchLabels:
+        workloads.train-schedule: "deployed"
+  template:
+    metadata:
+      name: 'train-schedule-{{.cluster}}'
+      labels:
+        workloadType: application
+        environment: "{{ .themes.environment }}"
+        syncType: "helm-remote"
+        cluster: "{{ .cluster.friendlyName }}"
+      finalizers:
+      - "resources-finalizer.argocd.argoproj.io"
+    spec:
+      project: default
+      sources:
+      - repoURL: "git@github.com:SamPriyadarshi/train-schedule-deploy-resources.git"
+        targetRevision: HEAD
+        path: sample-train-schedule/staging
+      destination:
+        name: '{{ .cluster.name }}'
+        namespace: 'train-schedule'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
