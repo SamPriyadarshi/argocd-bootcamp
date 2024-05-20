@@ -12,7 +12,7 @@ spec:
       #     staging: true
   template:
     metadata:
-      name: 'external-secrets'
+      name: 'external-secrets-{{.cluster}}'
       labels:
         workloadType: security
         environment: "{{ .themes.environment }}"
