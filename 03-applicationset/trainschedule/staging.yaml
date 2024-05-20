@@ -16,7 +16,7 @@ spec:
         workloads.train-schedule: "deployed"
   template:
     metadata:
-      name: 'train-schedule-{{.cluster}}'
+      name: 'train-schedule-{{.cluster.friendlyName}}'
       labels:
         workloadType: application
         environment: "{{ .themes.environment }}"
