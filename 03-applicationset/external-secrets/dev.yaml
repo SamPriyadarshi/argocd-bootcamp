@@ -29,7 +29,7 @@ spec:
         targetRevision: HEAD
         path: 03-applicationset/external-secrets/config
       destination:
-        name: '{{ .server }}'
+        name: '{{ .name }}'
         namespace: 'default'
       syncPolicy:
         automated: {}
