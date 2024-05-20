@@ -1,10 +1,10 @@
 cluster:
   # try to match name in ArgoCD or planned name
-  name: workloads-staging
+  name: staging
   # for applicationset names generally
-  friendlyName: "workloads-staging"
+  friendlyName: "staging"
   # use https://kubernetes.default.svc for local argo
-  server: https://kubernetes.default.svc
+  server: https://34.41.248.45
 
 # themes for common and shared values
 themes:
