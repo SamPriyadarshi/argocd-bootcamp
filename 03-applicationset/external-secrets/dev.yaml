@@ -25,9 +25,6 @@ spec:
           parameters:
           - name: "installCRDs"
             value: "true"
-      - repoURL: "https://github.com/SamPriyadarshi/argocd-bootcamp.git"
-        targetRevision: HEAD
-        path: 03-applicationset/external-secrets/config
       destination:
         name: '{{ .name }}'
         namespace: 'default'
